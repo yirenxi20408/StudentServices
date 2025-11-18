@@ -1,12 +1,12 @@
 # StudentServices - 学生信息管理系统
 
-基于Spring IoC和AOP技术实现的学生信息管理系统 (Student Information Management System using Spring IoC and AOP)
+基于Spring Boot IoC和AOP技术实现的学生信息管理系统 (Student Information Management System using Spring Boot IoC and AOP)
 
 ## 项目简介 (Project Overview)
 
-本项目使用Spring框架的IoC（控制反转）和AOP（面向切面编程）技术，实现了学生信息的增删改查操作。系统能够对所有操作进行日志记录，并对无效访问提供自定义错误提示。
+本项目使用Spring Boot框架的IoC（控制反转）和AOP（面向切面编程）技术，实现了学生信息的增删改查操作。系统能够对所有操作进行日志记录，并对无效访问提供自定义错误提示。
 
-This project uses Spring Framework's IoC (Inversion of Control) and AOP (Aspect-Oriented Programming) to implement student information CRUD operations. The system logs all operations and provides custom error messages for invalid access.
+This project uses Spring Boot Framework's IoC (Inversion of Control) and AOP (Aspect-Oriented Programming) to implement student information CRUD operations. The system logs all operations and provides custom error messages for invalid access.
 
 ## 功能特性 (Features)
 
@@ -25,10 +25,9 @@ This project uses Spring Framework's IoC (Inversion of Control) and AOP (Aspect-
 ## 技术栈 (Tech Stack)
 
 - Java 8
-- Spring Framework 5.3.20
-- Spring AOP
-- AspectJ 1.9.9.1
-- JUnit 4.13.2
+- Spring Boot 2.7.18
+- Spring Boot AOP Starter
+- JUnit 5 (Jupiter)
 - Maven
 
 ## 项目结构 (Project Structure)
@@ -76,7 +75,7 @@ mvn test
 ### 运行主程序 (Run Main Application)
 
 ```bash
-mvn exec:java -Dexec.mainClass="com.student.Main"
+mvn spring-boot:run
 ```
 
 ## AOP日志示例 (AOP Logging Example)
@@ -128,10 +127,11 @@ Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
 
 ### IoC (控制反转)
 
-使用Spring容器管理StudentService，通过@Service注解和XML配置实现依赖注入：
+使用Spring Boot容器管理StudentService，通过@Service注解和@SpringBootApplication自动配置实现依赖注入：
 
-```xml
-<context:component-scan base-package="com.student"/>
+```java
+@SpringBootApplication  // 自动启用组件扫描和自动配置
+public class Main { ... }
 ```
 
 ### AOP (面向切面编程)
