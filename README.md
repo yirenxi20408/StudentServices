@@ -11,6 +11,8 @@ This project uses Spring Boot Framework's IoC (Inversion of Control) and AOP (As
 ## 功能特性 (Features)
 
 - ✅ **学生实体类** (Student Entity): 包含学号(sid)、姓名(name)、电话(tele)
+- ✅ **Web界面** (Web Interface): 在localhost:8080提供完整的图形化操作界面
+- ✅ **RESTful API** (RESTful API): 提供标准的REST接口供前端调用
 - ✅ **CRUD操作** (CRUD Operations):
   - addStudent - 添加学生
   - deleteStudent - 删除学生
@@ -26,9 +28,11 @@ This project uses Spring Boot Framework's IoC (Inversion of Control) and AOP (As
 
 - Java 8
 - Spring Boot 2.7.18
+- Spring Boot Web Starter
 - Spring Boot AOP Starter
 - JUnit 5 (Jupiter)
 - Maven
+- HTML5 / CSS3 / JavaScript
 
 ## 项目结构 (Project Structure)
 
@@ -76,6 +80,54 @@ mvn test
 
 ```bash
 mvn spring-boot:run
+```
+
+### 访问Web界面 (Access Web Interface)
+
+启动应用后，在浏览器中访问：
+After starting the application, access in your browser:
+
+```
+http://localhost:8080
+```
+
+Web界面提供了完整的学生信息管理功能：
+The web interface provides complete student management features:
+- 添加学生 (Add Student)
+- 删除学生 (Delete Student)
+- 修改学生 (Modify Student)
+- 查询学生 (Query Student)
+- 查询所有学生 (Query All Students)
+
+## API接口 (API Endpoints)
+
+系统提供RESTful API接口：
+
+| 方法 (Method) | 路径 (Path) | 描述 (Description) |
+|--------------|-------------|-------------------|
+| GET | `/api/students` | 查询所有学生 (Get all students) |
+| GET | `/api/students/{sid}` | 查询指定学生 (Get student by ID) |
+| POST | `/api/students` | 添加学生 (Add new student) |
+| PUT | `/api/students/{sid}` | 修改学生信息 (Update student) |
+| DELETE | `/api/students/{sid}` | 删除学生 (Delete student) |
+
+请求示例 (Request Example):
+```bash
+# 添加学生 (Add Student)
+curl -X POST http://localhost:8080/api/students \
+  -H "Content-Type: application/json" \
+  -d '{"sid":"001","name":"张三","tele":"13800138000"}'
+
+# 查询所有学生 (Get All Students)
+curl http://localhost:8080/api/students
+
+# 修改学生 (Update Student)
+curl -X PUT http://localhost:8080/api/students/001 \
+  -H "Content-Type: application/json" \
+  -d '{"sid":"001","name":"张三修改","tele":"13900139000"}'
+
+# 删除学生 (Delete Student)
+curl -X DELETE http://localhost:8080/api/students/001
 ```
 
 ## AOP日志示例 (AOP Logging Example)
