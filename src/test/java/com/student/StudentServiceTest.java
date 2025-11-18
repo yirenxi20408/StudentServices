@@ -4,28 +4,25 @@ import com.student.exception.InvalidStudentException;
 import com.student.exception.StudentNotFoundException;
 import com.student.model.Student;
 import com.student.service.StudentService;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Test class for Student Service with IoC and AOP
+ * Test class for Student Service with Spring Boot IoC and AOP
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
+@SpringBootTest
 public class StudentServiceTest {
 
     @Autowired
     private StudentService studentService;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         // Clear all students before each test
         List<Student> allStudents = studentService.queryAllStudents();

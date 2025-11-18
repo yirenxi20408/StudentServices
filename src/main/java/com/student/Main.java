@@ -5,8 +5,9 @@ import com.student.exception.InvalidStudentException;
 import com.student.exception.StudentNotFoundException;
 import com.student.model.Student;
 import com.student.service.StudentService;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +15,7 @@ import java.util.Scanner;
 /**
  * Main application class for Student Management System
  */
+@SpringBootApplication
 public class Main {
 
     private static StudentService studentService;
@@ -22,14 +24,14 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("========================================");
         System.out.println("学生信息管理系统 (Student Management System)");
-        System.out.println("使用IoC和AOP技术 (Using IoC and AOP)");
+        System.out.println("使用Spring Boot IoC和AOP技术 (Using Spring Boot IoC and AOP)");
         System.out.println("========================================\n");
 
-        // Load Spring context
-        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        // Load Spring Boot context
+        ApplicationContext context = SpringApplication.run(Main.class, args);
         studentService = context.getBean(StudentService.class);
         
-        System.out.println("Spring容器加载成功! (Spring container loaded successfully!)\n");
+        System.out.println("Spring Boot容器加载成功! (Spring Boot container loaded successfully!)\n");
 
         // Main menu loop
         while (true) {
